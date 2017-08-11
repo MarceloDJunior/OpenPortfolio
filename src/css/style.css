@@ -1,0 +1,309 @@
+
+/* 
+    Created on : 04/03/2017, 21:41:33
+    Author     : Marcelo
+*/
+
+
+html{
+    height: 100%;
+}
+
+body{
+    min-height: 100%;
+    background-color: #f3f3f3;
+}
+
+.header{
+    background-color: #245580;
+    color: #fff;
+    padding: 15px 0;
+}
+
+.header h2{
+    margin: 0;
+}
+
+/* --------- INICIO PÁGINA DE LOGIN --------- */
+
+.login-page{
+    background-color: #245580;
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.login-page .content{
+    min-height: calc(100vh);
+    display: table-cell;
+    vertical-align: middle;
+    /*background-color: rgba(0,0,0,0.5);*/
+}
+
+.login-box{
+    margin: 20px auto 30px auto;
+    padding: 10px 25px;
+    max-width: 350px;
+    border-radius: 5px;
+    color: #ccc;
+}
+
+.login-input{
+    border-radius: 3px;
+    padding: 10px 12px;
+    height: 40px;
+}
+
+.login-box .login-titulo{
+    width: 35%;
+    /*float: left;*/
+    margin-bottom: 5px;
+}
+
+.login-box .login-titulo h4{
+    margin: 15px 0;
+    font-size: 24px;
+    color: #fff;
+}
+
+.login-box .recuperar-senha{
+    float: right;
+    text-align: right;
+    padding: 13px 1px 3px 1px;
+}
+
+.login-box .recuperar-senha i{
+    margin: 0 5px;
+}
+
+.login-box .btn-login{
+    text-align: center; 
+    margin-bottom: 10px;
+}
+
+.login-box .btn-login .btn{
+    background-color: #6185a5;
+    color: #fff;
+    font-size: 16px;
+    margin: 10px auto 10px auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 0px;
+    height: 42px;
+    width: 100%;
+}
+
+.login-box a{
+    color: #fff;
+}
+
+.login-box a .cadastre-se{
+    color: #fff;
+    margin-left: 5px;
+}
+
+
+/* --------- INICIO VALIDATION --------- */
+
+label.error{
+    color: red;
+    font-size: 12px;
+    margin-bottom: 0;
+}
+
+/* --------- FIM VALIDATION --------- */
+
+/* --------- FIM PÁGINA DE LOGIN --------- */
+
+/* --------- INICIO PÁGINA DE CADASTRO, CONFIRMAÇÃO E RECUPERAR SENHA --------- */
+
+.cadastro-page,
+.confirmacao-page,
+.recuperar-senha-page{
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    color: #245580;
+}
+
+.cadastro-page .content,
+.confirmacao-page .content,
+.recuperar-senha-page .content{
+    min-height: calc(100vh);
+    display: table-cell;
+    vertical-align: middle;
+    /*background-color: rgba(0,0,0,0.5);*/
+}
+
+.cadastro-page .white-box,
+.confirmacao-page .white-box,
+.recuperar-senha-page .white-box{
+    max-width: 550px;
+    margin: 20px auto 10px auto;
+    background-color: #fff;
+    border-radius: 6px;
+    padding: 20px 50px 30px 50px;
+    box-shadow: 0px 1px 9px #ccc;
+}
+
+.confirmacao-page .white-box{
+    padding: 20px 50px 15px 50px;
+}
+
+.cadastro-page .cadastro-box h3,
+.confirmacao-page .cadastro-page h3,
+.recuperar-senha-page .cadastro-page h3{
+    margin-bottom: 20px;
+}
+
+@media(max-width: 720px){
+    .cadastro-page .white-box{
+        padding: 10px 20px 20px 20px;
+    }
+    .confirmacao-page .white-box,
+    .recuperar-senha-page .white-box{
+        padding: 10px 20px 10px 20px;
+    }
+}
+
+.cadastro-page input,
+.cadastro-page select{
+    border-radius: 3px;
+    height: 40px
+}
+
+.cadastro-page .btn-cadastro .btn{
+    display: block;
+    width: 100%;
+    color: #fff;
+    background-color: #245580;
+    font-weight: 600;
+    margin-top: 30px;
+    border-radius: 0;
+}
+
+.cadastro-page .faca-login{
+    margin-top: 10px;
+    text-align: center;
+    color: #4d7198;
+}
+
+.confirmacao-page .btn{
+    margin: 10px 0;
+}
+
+
+/* --------- FIM PÁGINA DE CADASTRO, CONFIRMAÇÃO E RECUPERAR SENHA --------- */
+
+/* --------- INICIO INPUTS --------- */
+
+.input-icon > input{
+    width: 100%;
+    padding: 0px 0px;
+    margin: 0px 0px;
+    border: none;
+    font-size: 14px;
+    font-weight: 400;
+    text-indent: 55px;
+}
+
+.input-icon > i{ 
+    position: absolute;
+    padding: 8px 0px;
+    max-width: 45px;
+    min-width: 45px;
+    border: 1px solid #ccc;
+    margin: 0px;
+    background-color: #e8e8e8;
+    text-align: center;
+    color: #3673a9;
+    font-size: 16px;
+}
+
+.float-label{
+    position: relative;
+    margin: 15px 0 5px 0;
+}
+
+.float-label input ~ .plc,
+.float-label textarea ~ .plc{
+    pointer-events: none;
+    position: absolute;
+    color: #b9b9b9;
+    top: 10px;
+    left: 10px;
+    font-weight: 400;
+    font-size: 14px;
+    transition: all 100ms linear;
+    background-color: #fff;
+    padding: 0 3px;
+    border-radius: 3px;
+}
+
+.float-label input:focus ~ .plc,
+.float-label input.active ~ .plc,
+.float-label textarea:focus ~ .plc,
+.float-label textarea.active ~ .plc{
+    font-size: 11px;
+    top: -6px;
+    color: #2aabd2;
+}
+
+.float-label input.error ~ .plc,
+.float-label textarea.error ~ .plc{
+    color: red;
+}
+
+.float-label input:focus ~ .plc,
+.float-label textarea:focus ~ .plc{
+    color: #2aabd2;
+}
+
+input.error,
+textarea.error{
+    border-color: red;
+}
+
+.toggle-switch {
+    height: 40px;
+    margin-bottom: 15px;
+    padding: 4px;
+    background: #245580;
+    border-radius: 2px;
+}
+
+.toggle-switch-input {
+    display: none;
+}
+
+.toggle-switch-label {
+    float: left;
+    width: 50%;
+    line-height: 32px;
+    color: white;
+    text-align: center;
+    text-shadow: 0 -1px rgba(black, .2);
+    cursor: pointer;
+
+}
+
+.toggle-switch-input:checked + .toggle-switch-label{
+    font-weight: 500;
+    color: #434248;
+    text-shadow: 0 1px rgba(white, .5);
+    background: white;
+    border-radius: 2px;
+}
+
+/* --------- FIM INPUTS --------- */
+
+.warning{
+    background-color: #FCF8E3;
+    padding: 15px 10px;
+    margin: 15px 0;
+    color: #aa983f;
+    line-height: 16px;
+    border-radius: 5px;
+}
