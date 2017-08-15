@@ -1,18 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react'
+import UserAPI from './../api/userApi'
+import logo from './../images/logo.png'
+import { Redirect } from 'react-router-dom'
 
-import logo from './../images/logo.png';
+class Login extends React.Component {
 
-
-class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            codigo: '',
             email: '',
-            senha: ''
+            senha: '',
+            isSubmitDisabled : false,
+            redirect: false
         };
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange = (e) => {
@@ -23,15 +25,55 @@ class Login extends Component {
         this.setState({
             [name]: value
         });
+    };
+
+    startSession(codigo){
+
+        let d = new Date();
+        d.setTime(d.getTime() + (60*60*1000));
+        localStorage.setItem("user_id", codigo);
+
+        this.setState({ redirect: true })
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        alert('Email: ' + this.state.email);
-        alert('Senha: ' + this.state.senha);
+        this.setState({ isSubmitDisabled: true })
+        UserAPI.login(this.state.email, this.state.senha)
+            .then((data) => {
+                let codigo = data.codigo;
+                if(!isNaN(codigo)){
+                    this.startSession(codigo);
+                }
+                else{
+                    this.setState({ isSubmitDisabled: false })
+                }
+            })
+            .catch(function (error) {
+                console.log("erro: " + error)
+                this.setState({ isSubmitDisabled: false })
+            });
+    };
+
+
+    componentWillMount() {
+        if(localStorage.getItem("user_id")){
+            this.setState({ redirect: true })
+        }
+    }
+
+    componentDidMount() {
+        console.log("montou");
     }
 
     render() {
+
+        if (this.state.redirect) {
+            return (
+                <Redirect to="/"/>
+            )
+        }
+
         return (
             <div className="login-page">
                 <div className="content">
@@ -40,7 +82,7 @@ class Login extends Component {
                             <div className="col-xs-12">
                                 <div className="login-box">
                                     <div className="logo">
-                                        <img src={logo} className="img-responsive"/>
+                                        <img src={logo} className="img-responsive" alt="Open Portfolio"/>
                                     </div>
                                     <div className="login-titulo">
                                         <h4>Login</h4>
@@ -63,7 +105,8 @@ class Login extends Component {
                                         </div>
 
                                         <div className="btn-login">
-                                            <input type="submit" className="btn" value="Entrar"/>
+                                            <input type="submit" className="btn" value="Entrar"
+                                            disabled={this.state.isSubmitDisabled}/>
                                         </div>
 
 
@@ -83,4 +126,4 @@ class Login extends Component {
     }
 }
 
-export default Login
+export default Login;
