@@ -13,6 +13,19 @@ const UserAPI = {
                 senha: senha,
             })
         }).then((res) => res.json());
+    },
+
+    getUser: function (codigo) {
+        return fetch('http://localhost:8080/OpenPortfolioRest/rest/usuario/get', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                codigo: codigo,
+            })
+        }).then((res) => res.json());
     }
 }
 

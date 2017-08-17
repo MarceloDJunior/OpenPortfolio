@@ -14,7 +14,6 @@ class Login extends React.Component {
             isSubmitDisabled : false,
             redirect: false
         };
-
     }
 
     handleChange = (e) => {
@@ -50,9 +49,8 @@ class Login extends React.Component {
                 }
             })
             .catch(function (error) {
-                console.log("erro: " + error)
                 this.setState({ isSubmitDisabled: false })
-            });
+            }.bind(this));
     };
 
 
@@ -94,7 +92,6 @@ class Login extends React.Component {
                                                    onChange={this.handleChange}
                                                    className="form-control login-input"
                                                    placeholder="E-mail"/>
-
                                         </div>
                                         <div className="form-group">
                                             <input type="password" value={this.state.senha}
@@ -103,13 +100,10 @@ class Login extends React.Component {
                                                    className="form-control login-input"
                                                    placeholder="Senha"/>
                                         </div>
-
                                         <div className="btn-login">
                                             <input type="submit" className="btn" value="Entrar"
                                             disabled={this.state.isSubmitDisabled}/>
                                         </div>
-
-
                                         <div className="text-center">Não possui uma conta?
                                             <a href="#">
                                                 <span className="cadastre-se">Cadastre-se!</span>
