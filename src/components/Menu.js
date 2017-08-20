@@ -14,12 +14,16 @@ class Menu extends React.Component {
 
     logout = () => {
         localStorage.removeItem("user_id");
-        this.setState({redirect: true})
+        this.setState({
+            redirect: true
+        });
     };
 
-    componentWillMount() {
-        if (!localStorage.getItem("user_id")) {
-            this.setState({redirect: true})
+    componentWillMount(){
+        if(!localStorage.getItem("user_id")){
+            this.setState({
+                redirect: true
+            });
         }
     }
 
@@ -31,9 +35,6 @@ class Menu extends React.Component {
             )
         }
 
-        if (this.props.usuario === '') {
-            return null;
-        }
         else{
             return (
                 <header className="navbar navbar-fixed-top navbar-inverse">
@@ -52,7 +53,7 @@ class Menu extends React.Component {
                                     <li><Link to='/'>Home</Link></li>
                                     <li><Link to='/roster'>Roster</Link></li>
                                     <li><Link to='/schedule'>Schedule</Link></li>
-                                    <li><Link to='/login'>Login</Link></li>
+                                    <li><Link to='/login'>{this.props.usuario.nome}</Link></li>
                                 </ul>
                                 <ul className="nav navbar-nav navbar-right">
                                     <li><a href="#" onClick={this.logout}>Sair</a></li>

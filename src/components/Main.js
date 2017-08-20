@@ -2,12 +2,13 @@ import React from 'react'
 import {Switch, Route} from 'react-router-dom'
 import Login from './Login'
 import Pages from './Pages'
+import PropsRoute from './../util/propsRoute'
 
-const Main = () => (
+const Main = (props) => (
 
     <Switch>
-        <Route exact path='/login' component={Login}/>
-        <Route path='/' component={Pages}/>
+        <PropsRoute exact path='/login' component={Login} usuario={props.usuario}/>
+        <PropsRoute path='/' component={Pages} usuario={props.usuario}/>
     </Switch>
 
 )

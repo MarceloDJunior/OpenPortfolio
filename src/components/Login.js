@@ -26,23 +26,24 @@ class Login extends React.Component {
         });
     };
 
-    startSession(codigo){
-
+    startSession(usuario){
         let d = new Date();
         d.setTime(d.getTime() + (60*60*1000));
-        localStorage.setItem("user_id", codigo);
+        localStorage.setItem("user_id", usuario.codigo);
 
-        this.setState({ redirect: true })
+        this.setState({
+            redirect: true
+        });
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
         this.setState({ isSubmitDisabled: true })
         UserAPI.login(this.state.email, this.state.senha)
-            .then((data) => {
-                let codigo = data.codigo;
+            .then((usuario) => {
+                let codigo = usuario.codigo;
                 if(!isNaN(codigo)){
-                    this.startSession(codigo);
+                    this.startSession(usuario);
                 }
                 else{
                     this.setState({ isSubmitDisabled: false })
@@ -53,20 +54,16 @@ class Login extends React.Component {
             }.bind(this));
     };
 
-
-    componentWillMount() {
+    componentWillMount(){
         if(localStorage.getItem("user_id")){
-            this.setState({ redirect: true })
+            this.setState({
+                redirect: true
+            });
         }
     }
 
-    componentDidMount() {
-        console.log("montou");
-    }
-
     render() {
-
-        if (this.state.redirect) {
+        if(this.state.redirect){
             return (
                 <Redirect to="/"/>
             )
