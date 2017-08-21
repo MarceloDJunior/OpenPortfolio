@@ -1,15 +1,10 @@
 import React from 'react';
-import { Router, Route, browserHistory, IndexRoute } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 
-import Main from './components/Main';
-import Header from './components/Header';
+import App from './containers/App';
 
 export default (
-    <Router history={browserHistory}>
-        <Route exact path='/login' component={Login}/>
-
-        <Route path='/'>
-
-        </Route>
-    </Router>
+    <BrowserRouter>
+        <App/>
+    </BrowserRouter>
 )

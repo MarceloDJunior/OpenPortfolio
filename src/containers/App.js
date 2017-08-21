@@ -1,6 +1,6 @@
 import React from 'react'
 import UserAPI from './../api/userApi'
-import Header from './Header'
+import Header from '../components/Header'
 import Main from './Main'
 import './../css/bootstrap.min.css'
 import './../css/font-awesome.css'
@@ -17,18 +17,15 @@ class App extends React.Component {
 
     componentWillMount() {
         if (localStorage.getItem("user_id")) {
-            UserAPI.getUser(localStorage.getItem("user_id"))
-                .then((data) => {
-                    this.setState({usuario: data});
-                });
+            UserAPI.getUser(localStorage.getItem("user_id"));
         }
     }
 
     render() {
         return (
             <div>
-                <Header usuario={this.state.usuario}/>
-                <Main usuario={this.state.usuario}/>
+                <Header/>
+                <Main/>
             </div>
         )
     }

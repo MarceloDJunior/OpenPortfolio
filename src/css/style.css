@@ -47,6 +47,12 @@ main{
     color: #ccc;
 }
 
+.login-box .error{
+    margin-bottom: 14px;
+    font-size: 15px;
+    color: #ffffff;
+}
+
 .login-input{
     border-radius: 3px;
     padding: 10px 12px;
@@ -259,8 +265,8 @@ label.error{
     color: #2aabd2;
 }
 
-input.error,
-textarea.error{
+.has-error input,
+.has-error textarea{
     border-color: red;
 }
 

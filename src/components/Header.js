@@ -1,7 +1,6 @@
 import React from 'react'
 import {Switch, Route} from 'react-router-dom'
 import Menu from './Menu'
-import PropsRoute from './../util/propsRoute'
 
 class Header extends React.Component {
 
@@ -10,7 +9,7 @@ class Header extends React.Component {
         return (
             <Switch>
                 <Route exact path='/login' component={null}/>
-                <PropsRoute path='/' component={Menu} usuario={this.props.usuario}/>
+                <Route path='/' component={Menu}/>
             </Switch>
         )
     }

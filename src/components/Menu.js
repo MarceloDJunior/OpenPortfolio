@@ -1,6 +1,9 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-import {Redirect} from 'react-router-dom'
+import React from 'react';
+import {Link} from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
+import {connect} from 'react-redux';
+import store from '../store';
+import {logoutSuccess} from '../actions/user-actions';
 
 class Menu extends React.Component {
 
@@ -14,22 +17,12 @@ class Menu extends React.Component {
 
     logout = () => {
         localStorage.removeItem("user_id");
-        this.setState({
-            redirect: true
-        });
+        store.dispatch(logoutSuccess(true));
     };
-
-    componentWillMount(){
-        if(!localStorage.getItem("user_id")){
-            this.setState({
-                redirect: true
-            });
-        }
-    }
 
     render() {
 
-        if (this.state.redirect) {
+        if (this.props.logout) {
             return (
                 <Redirect to="/login"/>
             )
@@ -53,7 +46,7 @@ class Menu extends React.Component {
                                     <li><Link to='/'>Home</Link></li>
                                     <li><Link to='/roster'>Roster</Link></li>
                                     <li><Link to='/schedule'>Schedule</Link></li>
-                                    <li><Link to='/login'>{this.props.usuario.nome}</Link></li>
+                                    <li><Link to='/login'>{this.props.user.nome}</Link></li>
                                 </ul>
                                 <ul className="nav navbar-nav navbar-right">
                                     <li><a href="#" onClick={this.logout}>Sair</a></li>
@@ -67,5 +60,11 @@ class Menu extends React.Component {
         }
     }
 }
+const mapStateToProps = function (store) {
+    return {
+        user: store.userState.user,
+        logout: store.userState.logout
+    };
+};
 
-export default Menu
+export default connect(mapStateToProps)(Menu);
