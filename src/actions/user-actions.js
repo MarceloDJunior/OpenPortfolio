@@ -28,6 +28,21 @@ export function logoutSuccess(completed) {
     };
 }
 
+export function registerSuccess(user) {
+
+    return {
+        type: types.REGISTER_SUCCESS,
+        user
+    };
+}
+
+export function registerError(user) {
+
+    return {
+        type: types.REGISTER_ERROR,
+        user
+    };
+}
 
 export function getUserSuccess(user) {
     return {

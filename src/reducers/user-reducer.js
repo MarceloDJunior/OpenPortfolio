@@ -22,6 +22,12 @@ const userReducer = function (state = initialState, action) {
         case types.GET_USER_SUCCESS:
             return Object.assign({}, state, {user: action.user});
 
+        case types.REGISTER_SUCCESS:
+            return Object.assign({}, state, {user: action.user});
+
+        case types.REGISTER_ERROR:
+            return Object.assign({}, state, {error: action.error});
+
         default:
             return state
     }

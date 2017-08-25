@@ -11,4 +11,22 @@ $(document).ready(function() {
         $(sel).toggleClass('in');
         $(sel2).toggleClass('out');
     });
+
+    // label flutuante
+    $(".float-label").find("input, textarea").each(function () {
+        if ($(this).val()) {
+            $(this).addClass("active");
+        } else {
+            $(this).removeClass("active");
+        }
+    });
+    $(".float-label").find("input, textarea").each(function () {
+        $(this).on("change", function () {
+            if ($(this).val()) {
+                $(this).addClass("active");
+            } else {
+                $(this).removeClass("active");
+            }
+        });
+    });
 });

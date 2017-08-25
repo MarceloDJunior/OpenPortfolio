@@ -186,6 +186,7 @@ label.error{
     font-weight: 600;
     margin-top: 30px;
     border-radius: 0;
+    padding: 8px 0;
 }
 
 .cadastro-page .faca-login{
@@ -255,18 +256,22 @@ label.error{
     color: #2aabd2;
 }
 
-.float-label input.error ~ .plc,
-.float-label textarea.error ~ .plc{
-    color: red;
-}
-
 .float-label input:focus ~ .plc,
 .float-label textarea:focus ~ .plc{
     color: #2aabd2;
 }
 
-.has-error input,
-.has-error textarea{
+.float-label.has-error input ~ .plc,
+.float-label.has-error textarea ~ .plc{
+    color: red;
+}
+
+.float-label ~ .error{
+    color: red;
+    font-size: 11px;
+}
+
+.has-error .form-control{
     border-color: red;
 }
 

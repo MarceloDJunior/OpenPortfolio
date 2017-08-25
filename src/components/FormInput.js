@@ -1,28 +1,39 @@
 import React from 'react';
-import {Errors} from 'react-redux-form';
 
 const FormInput = (props) => {
 
-    function hasLabel() {
-        if(props.label){
+    function showLabelClasses() {
+        if (props.labelClasses) {
             return (
-                <label htmlFor={props.name}>{props.label}</label>
+                props.labelClasses
             )
         }
     }
 
+    function hasLabel() {
+        if (props.label) {
+            return (
+                <label className={showLabelClasses()} htmlFor={props.name}>{props.label}</label>
+            )
+        }
+    }
+
+    function showDivClasses() {
+        if (props.divClasses) {
+            return (
+                props.divClasses
+            )
+        }
+        else{
+            return '';
+        }
+    }
+
     return (
-        <div className={`form-group ${props.invalid ? 'has-error' : ''}`}>
-            {hasLabel}
+        <div className={`${showDivClasses()} ${props.invalid ? 'has-error' : ''}`}>
+            {props.labelAfter ? '' : hasLabel()}
             <input id={props.name} {...props} />
-            <Errors
-                className="error"
-                model={props.name}
-                messages={{
-                    required: props.requiredMessage,
-                }}
-                show="touched"
-            />
+            {props.labelAfter ? hasLabel() : ''}
         </div>
     )
 }
