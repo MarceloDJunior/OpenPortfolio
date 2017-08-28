@@ -3,7 +3,7 @@ import * as types from '../actions/action-types';
 const initialState = {
     user: [],
     error: '',
-    completed: false
+    logout: false
 };
 
 const userReducer = function (state = initialState, action) {
@@ -11,7 +11,7 @@ const userReducer = function (state = initialState, action) {
     switch (action.type) {
 
         case types.LOGIN_SUCCESS:
-            return Object.assign({}, state, {user: action.user});
+            return Object.assign({}, state, {user: action.user, error: ''});
 
         case types.LOGIN_ERROR:
             return Object.assign({}, state, {error: action.error});
@@ -23,7 +23,7 @@ const userReducer = function (state = initialState, action) {
             return Object.assign({}, state, {user: action.user});
 
         case types.REGISTER_SUCCESS:
-            return Object.assign({}, state, {user: action.user});
+            return Object.assign({}, state, {user: action.user, error: ''});
 
         case types.REGISTER_ERROR:
             return Object.assign({}, state, {error: action.error});

@@ -1,9 +1,19 @@
 import React from 'react'
+import ProfileWidget from '../components/ProfileWidget';
+import {connect} from 'react-redux';
 
-const Home = () => (
-    <div>
-        <h1>Welcome to the Tornadoes Website!</h1>
-    </div>
-)
+const Home = (props) => {
 
-export default Home
+    return(
+        <ProfileWidget user={props.user} myprofile={true}/>
+    )
+
+};
+
+const mapStateToProps = function (store) {
+    return {
+        user: store.userState.user,
+    };
+};
+
+export default connect(mapStateToProps)(Home);

@@ -1,7 +1,8 @@
 import * as types from '../actions/action-types';
 
 const initialState = {
-    status: false
+    isCadastroBtnDisabled: false,
+    validateFormOn: 'submit'
 };
 
 const cadastroLayoutReducer = function (state = initialState, action) {
@@ -11,10 +12,13 @@ const cadastroLayoutReducer = function (state = initialState, action) {
         case types.IS_CADASTRO_BTN_DISABLED:
             return Object.assign({}, state, {isCadastroBtnDisabled: action.status});
 
+        case types.VALIDATE_FORM_ON:
+            return Object.assign({}, state, {validateFormOn: action.formAction});
+
         default:
-            return state
+            return state;
     }
 
-}
+};
 
 export default cadastroLayoutReducer;

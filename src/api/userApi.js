@@ -9,6 +9,7 @@ import {
 } from '../actions/user-actions';
 import {isLoginBtnDisabled} from '../actions/login-layout-actions';
 import {isCadastroBtnDisabled} from '../actions/cadastro-layout-actions';
+import {actions} from 'react-redux-form';
 
 const UserAPI = {
     login: function (email, senha) {
@@ -28,11 +29,12 @@ const UserAPI = {
                 if (!isNaN(response.codigo)) {
                     store.dispatch(logoutSuccess(false));
                     store.dispatch(loginSuccess(response));
+                    store.dispatch(actions.reset("loginForm"));
                 }
                 else {
-                    store.dispatch(isLoginBtnDisabled(false));
                     store.dispatch(loginError(response.mensagem));
                 }
+                store.dispatch(isLoginBtnDisabled(false));
                 return response;
             })
             .catch(error => {
@@ -41,7 +43,7 @@ const UserAPI = {
             });
     },
 
-    register: function (usuario) {
+    register: function (user) {
         store.dispatch(isCadastroBtnDisabled(true));
         return fetch('http://localhost:8080/OpenPortfolioRest/rest/usuario/cadastrar', {
             method: 'POST',
@@ -49,18 +51,29 @@ const UserAPI = {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({usuario})
+            body: JSON.stringify({
+                "usuario": {
+                    "nome": user.nome,
+                    "sobrenome": user.sobrenome,
+                    "email": user.email,
+                    "data_nascimento": new Date(user.ano, user.mes, user.dia),
+                    "sexo": user.sexo,
+                    "fone": user.fone,
+                    "senha": user.senha
+                }
+            })
         }).then((res) => res.json())
             .then(response => {
                 console.log(response);
                 if (!isNaN(response.codigo)) {
                     store.dispatch(logoutSuccess(false));
                     store.dispatch(registerSuccess(response));
+                    store.dispatch(actions.reset("cadastroForm"));
                 }
                 else {
-                    store.dispatch(isCadastroBtnDisabled(false));
                     store.dispatch(registerError(response.mensagem));
                 }
+                store.dispatch(isCadastroBtnDisabled(false));
                 return response;
             })
             .catch(error => {

@@ -30,6 +30,10 @@ export function logoutSuccess(completed) {
 
 export function registerSuccess(user) {
 
+    let d = new Date();
+    d.setTime(d.getTime() + (60 * 60 * 1000));
+    localStorage.setItem("user_id", user.codigo);
+
     return {
         type: types.REGISTER_SUCCESS,
         user

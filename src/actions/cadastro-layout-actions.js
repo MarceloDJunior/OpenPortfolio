@@ -7,3 +7,11 @@ export function isCadastroBtnDisabled(status) {
         status
     };
 }
+
+export function validateFormOn(formAction) {
+
+    return {
+        type: types.VALIDATE_FORM_ON,
+        formAction
+    };
+}

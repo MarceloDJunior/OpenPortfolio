@@ -4,7 +4,8 @@ import Header from '../components/Header';
 import './../css/bootstrap.min.css';
 import './../css/font-awesome.css';
 import './../css/style.css';
-import {Redirect} from 'react-router-dom'
+import {Redirect} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 class App extends React.Component {
 
@@ -35,7 +36,7 @@ class App extends React.Component {
         else {
             return (
                 <div>
-                    <Header/>
+                    <Header user={this.props.user}/>
                     <main>
                         <div className="container side-collapse-container">
                             {this.props.children}
@@ -46,4 +47,10 @@ class App extends React.Component {
         }
     }
 }
-export default App
+const mapStateToProps = function (store) {
+    return {
+        user: store.userState.user,
+    };
+};
+
+export default connect(mapStateToProps)(App);

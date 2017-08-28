@@ -1,30 +1,53 @@
-
-/* 
+/*
     Created on : 04/03/2017, 21:41:33
     Author     : Marcelo
 */
 
-
-html{
+html {
     height: 100%;
 }
 
-body{
+body {
     min-height: 100%;
     background-color: #f3f3f3;
+    overflow-x: hidden;
 }
 
-.header h2{
+.header h2 {
     margin: 0;
 }
 
-main{
-    margin-top: 50px;
+main {
+    margin-top: 90px;
 }
 
-/* --------- INICIO PÁGINA DE LOGIN --------- */
+.grid_2 {
+    width: 50%;
+}
 
-.login-page{
+.grid_3 {
+    width: 33.3%;
+}
+
+[class*=grid_] {
+    display: inline-block;
+    padding-right: 18px;
+}
+
+[class*=grid_]:last-of-type {
+    padding-right: 0;
+}
+
+.color-primary,
+.color-primary:hover,
+.color-primary:focus {
+    color: #fff;
+    background-color: #245580;
+}
+
+/* --------- BEGIN PÁGINA DE LOGIN --------- */
+
+.login-page {
     background-color: #245580;
     display: table;
     position: absolute;
@@ -32,14 +55,14 @@ main{
     width: 100%;
 }
 
-.login-page .content{
+.login-page .content {
     min-height: calc(100vh);
     display: table-cell;
     vertical-align: middle;
     /*background-color: rgba(0,0,0,0.5);*/
 }
 
-.login-box{
+.login-box {
     margin: 20px auto 30px auto;
     padding: 10px 25px;
     max-width: 350px;
@@ -47,46 +70,46 @@ main{
     color: #ccc;
 }
 
-.login-box .error{
+.login-box .error {
     margin-bottom: 14px;
     font-size: 15px;
     color: #ffffff;
 }
 
-.login-input{
+.login-input {
     border-radius: 3px;
     padding: 10px 12px;
     height: 40px;
 }
 
-.login-box .login-titulo{
+.login-box .login-titulo {
     width: 35%;
     /*float: left;*/
     margin-bottom: 5px;
 }
 
-.login-box .login-titulo h4{
+.login-box .login-titulo h4 {
     margin: 15px 0;
     font-size: 24px;
     color: #fff;
 }
 
-.login-box .recuperar-senha{
+.login-box .recuperar-senha {
     float: right;
     text-align: right;
     padding: 13px 1px 3px 1px;
 }
 
-.login-box .recuperar-senha i{
+.login-box .recuperar-senha i {
     margin: 0 5px;
 }
 
-.login-box .btn-login{
-    text-align: center; 
+.login-box .btn-login {
+    text-align: center;
     margin-bottom: 10px;
 }
 
-.login-box .btn-login .btn{
+.login-box .btn-login .btn {
     background-color: #6185a5;
     color: #fff;
     font-size: 16px;
@@ -98,33 +121,32 @@ main{
     width: 100%;
 }
 
-.login-box a{
+.login-box a {
     color: #fff;
 }
 
-.login-box a .cadastre-se{
+.login-box a .cadastre-se {
     color: #fff;
     margin-left: 5px;
 }
 
+/* --------- BEGIN VALIDATION --------- */
 
-/* --------- INICIO VALIDATION --------- */
-
-label.error{
+label.error {
     color: red;
     font-size: 12px;
     margin-bottom: 0;
 }
 
-/* --------- FIM VALIDATION --------- */
+/* --------- END VALIDATION --------- */
 
-/* --------- FIM PÁGINA DE LOGIN --------- */
+/* --------- END PÁGINA DE LOGIN --------- */
 
-/* --------- INICIO PÁGINA DE CADASTRO, CONFIRMAÇÃO E RECUPERAR SENHA --------- */
+/* --------- BEGIN PÁGINA DE CADASTRO, CONFIRMAÇÃO E RECUPERAR SENHA --------- */
 
 .cadastro-page,
 .confirmacao-page,
-.recuperar-senha-page{
+.recuperar-senha-page {
     display: table;
     position: absolute;
     height: 100%;
@@ -134,7 +156,7 @@ label.error{
 
 .cadastro-page .content,
 .confirmacao-page .content,
-.recuperar-senha-page .content{
+.recuperar-senha-page .content {
     min-height: calc(100vh);
     display: table-cell;
     vertical-align: middle;
@@ -143,7 +165,7 @@ label.error{
 
 .cadastro-page .white-box,
 .confirmacao-page .white-box,
-.recuperar-senha-page .white-box{
+.recuperar-senha-page .white-box {
     max-width: 550px;
     margin: 20px auto 10px auto;
     background-color: #fff;
@@ -152,33 +174,34 @@ label.error{
     box-shadow: 0px 1px 9px #ccc;
 }
 
-.confirmacao-page .white-box{
+.confirmacao-page .white-box {
     padding: 20px 50px 15px 50px;
 }
 
 .cadastro-page .cadastro-box h3,
 .confirmacao-page .cadastro-page h3,
-.recuperar-senha-page .cadastro-page h3{
+.recuperar-senha-page .cadastro-page h3 {
     margin-bottom: 20px;
 }
 
-@media(max-width: 720px){
-    .cadastro-page .white-box{
+@media (max-width: 720px) {
+    .cadastro-page .white-box {
         padding: 10px 20px 20px 20px;
     }
+
     .confirmacao-page .white-box,
-    .recuperar-senha-page .white-box{
+    .recuperar-senha-page .white-box {
         padding: 10px 20px 10px 20px;
     }
 }
 
 .cadastro-page input,
-.cadastro-page select{
+.cadastro-page select {
     border-radius: 3px;
     height: 40px
 }
 
-.cadastro-page .btn-cadastro .btn{
+.cadastro-page .btn-cadastro .btn {
     display: block;
     width: 100%;
     color: #fff;
@@ -189,22 +212,21 @@ label.error{
     padding: 8px 0;
 }
 
-.cadastro-page .faca-login{
+.cadastro-page .faca-login {
     margin-top: 10px;
     text-align: center;
     color: #4d7198;
 }
 
-.confirmacao-page .btn{
+.confirmacao-page .btn {
     margin: 10px 0;
 }
 
+/* --------- END PÁGINA DE CADASTRO, CONFIRMAÇÃO E RECUPERAR SENHA --------- */
 
-/* --------- FIM PÁGINA DE CADASTRO, CONFIRMAÇÃO E RECUPERAR SENHA --------- */
+/* --------- BEGIN INPUTS --------- */
 
-/* --------- INICIO INPUTS --------- */
-
-.input-icon > input{
+.input-icon > input {
     width: 100%;
     padding: 0px 0px;
     margin: 0px 0px;
@@ -214,7 +236,7 @@ label.error{
     text-indent: 55px;
 }
 
-.input-icon > i{ 
+.input-icon > i {
     position: absolute;
     padding: 8px 0px;
     max-width: 45px;
@@ -227,13 +249,13 @@ label.error{
     font-size: 16px;
 }
 
-.float-label{
+.float-label {
     position: relative;
     margin: 15px 0 5px 0;
 }
 
 .float-label input ~ .plc,
-.float-label textarea ~ .plc{
+.float-label textarea ~ .plc {
     pointer-events: none;
     position: absolute;
     color: #b9b9b9;
@@ -250,28 +272,28 @@ label.error{
 .float-label input:focus ~ .plc,
 .float-label input.active ~ .plc,
 .float-label textarea:focus ~ .plc,
-.float-label textarea.active ~ .plc{
+.float-label textarea.active ~ .plc {
     font-size: 11px;
     top: -6px;
     color: #2aabd2;
 }
 
 .float-label input:focus ~ .plc,
-.float-label textarea:focus ~ .plc{
+.float-label textarea:focus ~ .plc {
     color: #2aabd2;
 }
 
 .float-label.has-error input ~ .plc,
-.float-label.has-error textarea ~ .plc{
+.float-label.has-error textarea ~ .plc {
     color: red;
 }
 
-.float-label ~ .error{
+.float-label ~ .error {
     color: red;
     font-size: 11px;
 }
 
-.has-error .form-control{
+.has-error .form-control {
     border-color: red;
 }
 
@@ -298,7 +320,7 @@ label.error{
 
 }
 
-.toggle-switch-input:checked + .toggle-switch-label{
+.toggle-switch-input:checked + .toggle-switch-label {
     font-weight: 500;
     color: #434248;
     text-shadow: 0 1px rgba(white, .5);
@@ -306,9 +328,9 @@ label.error{
     border-radius: 2px;
 }
 
-/* --------- FIM INPUTS --------- */
+/* --------- END INPUTS --------- */
 
-.warning{
+.warning {
     background-color: #FCF8E3;
     padding: 15px 10px;
     margin: 15px 0;
@@ -317,40 +339,111 @@ label.error{
     border-radius: 5px;
 }
 
-/* ----------- INICIO MENU -----------*/
+/* ----------- BEGIN MENU -----------*/
 
 .navbar,
-.navbar-inverse{
+.navbar-inverse {
     background-color: #245580;
     color: #fff;
 }
 
-.navbar-inverse .navbar-nav>li>a {
+.navbar-inverse .navbar-nav > li > a {
     color: #ccc;
 }
 
 @media screen and (max-width: 768px) {
-    .side-collapse-container{
-        width:100%;
-        position:relative;
-        left:0;
-        transition:left .4s;
+    .side-collapse-container {
+        width: 100%;
+        position: relative;
+        left: 0;
+        transition: left .4s;
     }
-    .side-collapse-container.out{
-        left:200px;
+
+    .side-collapse-container.out {
+        left: 200px;
     }
+
     .side-collapse {
-        top:50px;
-        bottom:0;
-        left:0;
-        width:200px;
-        position:fixed;
-        overflow:hidden;
-        transition:width .4s;
+        top: 50px;
+        bottom: 0;
+        left: 0;
+        width: 200px;
+        position: fixed;
+        overflow: hidden;
+        transition: width .4s;
     }
+
     .side-collapse.in {
-        width:0;
+        width: 0;
     }
 }
 
-/* ------------------------------------*/
+/* ----------- END MENU -----------*/
+
+/* ----------- BEGIN PROFILE -----------*/
+
+.profile {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.profile-picture {
+    position: relative;
+    margin: 10px auto;
+    text-align: center;
+    width: 140px;
+}
+
+.profile-picture img {
+    width: 140px;
+    margin: 10px auto;
+    padding: 5px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: rgb(0, 0, 0);
+    border-image: initial;
+    border-radius: 50%;
+}
+
+.profile h1 {
+    font-size: 18px;
+    text-align: center;
+}
+
+.profile .contact-info {
+    list-style: none;
+    margin-top: 15px;
+    border-top: 1px solid #080808;
+    padding-left: 0;
+    padding-top: 10px;
+}
+
+.profile .contact-info li {
+    margin: 10px 0;
+    font-size: 12px;
+}
+
+.profile .contact-info i {
+    width: 25px;
+    font-size: 14px;
+    text-align: left;
+}
+
+.profile .edit-profile {
+    margin: 5px auto;
+    border-radius: 16px;
+    padding: 6px 16px;
+    border: none;
+}
+
+.profile .btn-edit-picture {
+    position: absolute;
+    bottom: 7px;
+    right: 20px;
+    border-radius: 50%;
+    padding: 8px 10px;
+    font-size: 11px;
+}
+
+/* ----------- END PROFILE -----------*/

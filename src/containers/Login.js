@@ -6,6 +6,9 @@ import logo from './../images/logo.png';
 import {Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 import FormInput from '../components/FormInput';
+import {validateFormOn} from '../actions/login-layout-actions';
+import store from '../store';
+import {required} from './../util/validators';
 
 class Login extends React.Component {
 
@@ -22,6 +25,10 @@ class Login extends React.Component {
             )
         }
     }
+
+    handleSubmitError = () => {
+        store.dispatch(validateFormOn("change"))
+    };
 
     render() {
 
@@ -46,7 +53,13 @@ class Login extends React.Component {
                                         </div>
                                         {this.renderErrorMessage()}
                                         <Form model="loginForm"
+                                              onSubmitFailed={this.handleSubmitError}
                                               onSubmit={(val) => this.handleSubmit(val)}
+                                              validators={{
+                                                  email: {required},
+                                                  senha: {required}
+                                              }}
+                                              validateOn={this.props.validateFormOn}
                                         >
                                             <div className="form-group">
                                                 <Control.text
@@ -54,10 +67,6 @@ class Login extends React.Component {
                                                     component={FormInput}
                                                     className="form-control login-input"
                                                     placeholder="E-mail"
-                                                    validators={{
-                                                        required: (val) => !!val.length
-                                                    }}
-                                                    validateOn="change"
                                                     mapProps={{
                                                         invalid: ({fieldValue}) => !fieldValue.valid
                                                         && fieldValue.touched
@@ -78,10 +87,6 @@ class Login extends React.Component {
                                                     component={FormInput}
                                                     className="form-control login-input"
                                                     placeholder="Senha"
-                                                    validators={{
-                                                        required: (val) => !!val.length
-                                                    }}
-                                                    validateOn="change"
                                                     mapProps={{
                                                         invalid: ({fieldValue}) => !fieldValue.valid
                                                         && fieldValue.touched
@@ -123,7 +128,8 @@ const mapStateToProps = function (store) {
     return {
         user: store.userState.user,
         error: store.userState.error,
-        isLoginBtnDisabled: store.loginLayoutState.isLoginBtnDisabled
+        isLoginBtnDisabled: store.loginLayoutState.isLoginBtnDisabled,
+        validateFormOn: store.loginLayoutState.validateFormOn
     };
 };
 
