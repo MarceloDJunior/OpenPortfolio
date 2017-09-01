@@ -49,8 +49,18 @@ export function registerError(user) {
 }
 
 export function getUserSuccess(user) {
+
     return {
         type: types.GET_USER_SUCCESS,
         user
     };
+}
+
+export function updateProfilePictureSuccess(codigo, foto) {
+
+    return {
+        type: types.UPDATE_PROFILE_PICTURE_SUCCESS,
+        codigo,
+        foto
+    }
 }

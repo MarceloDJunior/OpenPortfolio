@@ -5,10 +5,13 @@ import {
     loginError,
     logoutSuccess,
     registerSuccess,
-    registerError
+    registerError,
+    updateProfilePictureSuccess
 } from '../actions/user-actions';
+import {appServerError} from '../actions/app-actions';
 import {isLoginBtnDisabled} from '../actions/login-layout-actions';
 import {isCadastroBtnDisabled} from '../actions/cadastro-layout-actions';
+import {isShowingProfileUploadModal} from '../actions/profile-layout-actions';
 import {actions} from 'react-redux-form';
 
 const UserAPI = {
@@ -96,9 +99,33 @@ const UserAPI = {
             .then(response => {
                 store.dispatch(getUserSuccess(response));
                 return response;
+            })
+            .catch(error => {
+                store.dispatch(appServerError(true));
+            });
+    },
+
+    updateProfile: function (codigo, foto) {
+        return fetch('http://localhost:8080/OpenPortfolioRest/rest/usuario/atualizafoto', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                codigo: codigo,
+                foto: foto
+            })
+        }).then((res) => res.json())
+            .then(response => {
+                store.dispatch(updateProfilePictureSuccess(codigo, foto));
+                store.dispatch(isShowingProfileUploadModal(false))
+                return response;
+            })
+            .catch(error => {
+                store.dispatch(appServerError(true));
             });
     }
-}
-
+};
 
 export default UserAPI

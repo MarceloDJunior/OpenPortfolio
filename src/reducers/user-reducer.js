@@ -28,10 +28,19 @@ const userReducer = function (state = initialState, action) {
         case types.REGISTER_ERROR:
             return Object.assign({}, state, {error: action.error});
 
+        case types.UPDATE_PROFILE_PICTURE_SUCCESS:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    foto: action.foto
+                }
+            };
+
         default:
             return state
     }
 
-}
+};
 
 export default userReducer;

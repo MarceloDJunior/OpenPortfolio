@@ -1,3 +1,6 @@
+// App
+export const APP_SERVER_ERROR = 'APP_SERVER_ERROR';
+
 // Users
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
@@ -5,10 +8,14 @@ export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
 export const GET_USER_SUCCESS = 'GET_USER_SUCCESS';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_ERROR = 'REGISTER_ERROR';
+export const UPDATE_PROFILE_PICTURE_SUCCESS = 'UPDATE_PROFILE_PICTURE_SUCCESS';
 
 // Login layout
 export const IS_LOGIN_BTN_DISABLED = 'IS_LOGIN_BTN_DISABLED';
 
-// CadastroLayout
+// Cadastro Layout
 export const IS_CADASTRO_BTN_DISABLED = 'IS_CADASTRO_BTN_DISABLED';
 export const VALIDATE_FORM_ON = 'VALIDATE_FORM_ON';
+
+// Profile Layout
+export const IS_SHOWING_PROFILE_UPLOAD_MODAL = 'IS_SHOWING_PROFILE_UPLOAD_MODAL';

@@ -1,18 +1,32 @@
 import React from 'react';
-import profile_empty from './../images/profile-empty.jpg'
-import ProfileButtons from './ProfileButtons'
+import profile_empty from './../images/profile-empty.jpg';
+import ProfileButtons from './ProfileButtons';
+import 'react-images-uploader/styles.css';
+import 'react-images-uploader/font.css';
+import ProfilePictureUploader from "./ProfilePictureUploader";
+import {isShowingProfileUploadModal} from '../actions/profile-layout-actions';
+import store from '../store';
+import {Image, Transformation} from 'cloudinary-react';
 
 const ProfileWidget = (props) => {
 
     const renderProfilePicture = () => {
         if (props.user.foto) {
-            return null;
+            return (
+                <div className="profile-picture">
+                    <Image cloudName="openportfolio" publicId={props.user.foto}
+                           alt="Foto do perfil" className="img-responsive">
+                        <Transformation width="140" height="140" crop="fill"/>
+                    </Image>
+                    {renderEditProfileButton()}
+                </div>
+            )
         }
         else {
             return (
                 <div className="profile-picture">
-                    <img src={profile_empty} className="img-responsive" alt=" Foto do perfil"/>
-                    {renderEditProfilePicture()}
+                    <img src={profile_empty} className="img-responsive" alt="Foto do perfil"/>
+                    {renderEditProfileButton()}
                 </div>
             )
         }
@@ -39,19 +53,19 @@ const ProfileWidget = (props) => {
         }
     };
 
-    const renderUploadProfilePicture = () => {
-        console.log(" teste");
+    const onEditPictureClick = () => {
+        store.dispatch(isShowingProfileUploadModal(true));
     };
 
-    const renderEditProfilePicture = () => {
+    const renderEditProfileButton = () => {
         if (props.myprofile) {
             return (
                 <button
                     className="btn color-primary btn-edit-picture"
-                    onClick={renderUploadProfilePicture}
+                    onClick={onEditPictureClick}
                     title="Editar foto"
                 >
-                    <i className=" fa fa-pencil"></i>
+                    <i className="fa fa-pencil"></i>
                 </button>
             )
         }
@@ -62,11 +76,14 @@ const ProfileWidget = (props) => {
 
     return (
         <div className=" col-xs-12 col-md-4">
-            <div className=" profile">
+            <div className="profile">
                 {renderProfilePicture()}
                 <h1>{props.user.nome} {props.user.sobrenome}</h1>
                 <ProfileButtons user={props.user} myprofile={props.myprofile}/>
                 {renderContactInfo()}
+                {props.myprofile &&
+                    <ProfilePictureUploader user={props.user}/>
+                }
             </div>
         </div>
     )
