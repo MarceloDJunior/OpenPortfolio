@@ -7,7 +7,7 @@ const ProfileButtons = (props) => {
         return (
             <div className="text-center">
                 <Link to="/perfil/editar">
-                    <button className="edit-profile color-primary">
+                    <button className="edit-profile-btn color-primary">
                         Editar Perfil
                     </button>
                 </Link>

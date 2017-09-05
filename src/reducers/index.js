@@ -11,6 +11,7 @@ import profileLayoutReducer from './profile-layout-reducer';
 // Form Reducers
 import initialLoginForm from './login-form-reducer';
 import initialCadastroForm from './cadastro-form-reducer';
+import initialEditProfileForm from './edit-profile-form-reducer';
 
 // Combine Reducers
 var reducers = combineReducers({
@@ -21,7 +22,8 @@ var reducers = combineReducers({
     profileLayoutState: profileLayoutReducer,
     ...createForms({
         loginForm: initialLoginForm,
-        cadastroForm: initialCadastroForm
+        cadastroForm: initialCadastroForm,
+        editProfileForm: initialEditProfileForm
     }),
 });
 

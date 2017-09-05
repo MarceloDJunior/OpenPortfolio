@@ -18,7 +18,7 @@ const ProfileWidget = (props) => {
                            alt="Foto do perfil" className="img-responsive">
                         <Transformation width="140" height="140" crop="fill"/>
                     </Image>
-                    {renderEditProfileButton()}
+                    {renderEditProfilePictureButton()}
                 </div>
             )
         }
@@ -26,7 +26,7 @@ const ProfileWidget = (props) => {
             return (
                 <div className="profile-picture">
                     <img src={profile_empty} className="img-responsive" alt="Foto do perfil"/>
-                    {renderEditProfileButton()}
+                    {renderEditProfilePictureButton()}
                 </div>
             )
         }
@@ -57,7 +57,7 @@ const ProfileWidget = (props) => {
         store.dispatch(isShowingProfileUploadModal(true));
     };
 
-    const renderEditProfileButton = () => {
+    const renderEditProfilePictureButton = () => {
         if (props.myprofile) {
             return (
                 <button

@@ -6,6 +6,7 @@ import Login from './containers/Login';
 import Cadastro from './containers/Cadastro';
 import Home from './containers/Home';
 import Profile from './containers/Profile';
+import ProfileEdit from './containers/ProfileEdit';
 import Roster from  './containers/Roster';
 import Schedule from './containers/Schedule';
 import PageNotFound from './containers/PageNotFound';
@@ -18,7 +19,8 @@ export default (
             <App>
                 <Switch>
                     <Route exact path='/' component={Home}/>
-                    <Route path='/perfil' component={Profile}/>
+                    <Route exact path='/perfil' component={Profile}/>
+                    <Route path='/perfil/editar' component={ProfileEdit}/>
                     <Route path='/roster' component={Roster}/>
                     <Route path='/schedule' component={Schedule}/>
                     <Route path='*' exact={true} component={PageNotFound} />

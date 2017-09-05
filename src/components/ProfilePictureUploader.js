@@ -17,7 +17,7 @@ class ProfilePictureUploader extends React.Component {
         super(props);
 
         this.state = {
-            uploadedFileCloudinaryUrl: '',
+            uploadedFileUrl: '',
             uploadedFile: ''
         };
     }
@@ -42,7 +42,7 @@ class ProfilePictureUploader extends React.Component {
 
             if (response.body.public_id !== '') {
                 this.setState({
-                    uploadedFileCloudinaryUrl: response.body.public_id
+                    uploadedFileUrl: response.body.public_id
                 });
                 console.log(response.body.public_id);
             }
@@ -66,7 +66,17 @@ class ProfilePictureUploader extends React.Component {
     };
 
     updateProfilePicture = () => {
-        UserAPI.updateProfile(this.props.user.codigo, this.state.uploadedFileCloudinaryUrl);
+        UserAPI.updateProfilePicture(this.props.user.codigo, this.state.uploadedFileUrl);
+    };
+
+    deletePicture = () => {
+
+        UserAPI.deleteProfilePicture(this.state.uploadedFileUrl);
+
+        this.setState({
+            uploadedFileUrl: ''
+        });
+
     };
 
     renderUploadedPictures = () => {
@@ -74,11 +84,13 @@ class ProfilePictureUploader extends React.Component {
             <div className="text-center">
                 <div className="uploaded-picture">
                     <Image cloudName="openportfolio"
-                           publicId={this.state.uploadedFileCloudinaryUrl}
-
-                    >
+                           publicId={this.state.uploadedFileUrl}>
                         <Transformation width="180" height="180" crop="fill"/>
                     </Image>
+                    <div className="delete-picture"
+                         onClick={this.deletePicture}>
+                        <i className="fa fa-remove"></i>
+                    </div>
                 </div>
                 <button
                     className="btn btn-update-picture color-primary"
@@ -91,7 +103,7 @@ class ProfilePictureUploader extends React.Component {
     };
 
     renderContent = () => {
-        if (this.state.uploadedFileCloudinaryUrl) {
+        if (this.state.uploadedFileUrl) {
             return this.renderUploadedPictures();
         }
         else {

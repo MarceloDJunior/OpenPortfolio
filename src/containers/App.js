@@ -47,7 +47,9 @@ class App extends React.Component {
                         <Header user={this.props.user}/>
                         <main>
                             <div className="container side-collapse-container">
-                                {this.props.children}
+                                <div className="row">
+                                    {this.props.children}
+                                </div>
                             </div>
                         </main>
                     </div>

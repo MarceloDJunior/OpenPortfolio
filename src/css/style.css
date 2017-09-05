@@ -386,6 +386,7 @@ label.error {
     background-color: #fff;
     padding: 15px;
     border-radius: 5px;
+    margin-bottom: 20px;
 }
 
 .profile-picture {
@@ -430,7 +431,7 @@ label.error {
     text-align: left;
 }
 
-.profile .edit-profile {
+.profile .edit-profile-btn {
     margin: 5px auto;
     border-radius: 16px;
     padding: 6px 16px;
@@ -468,7 +469,7 @@ label.error {
 }
 
 .uploaded-picture {
-    display: inline;
+    display: inline-block;
     position: relative;
     margin: 0 auto;
 }
@@ -478,6 +479,16 @@ label.error {
     border: 1px solid #000;
 }
 
+.uploaded-picture .delete-picture {
+    position: absolute;
+    font-size: 24px;
+    top: 0px;
+    right: 5px;
+    cursor: pointer;
+    padding: 0px;
+    margin: 0;
+}
+
 .btn-update-picture {
     display: block;
     border-radius: 16px;
@@ -485,3 +496,16 @@ label.error {
 }
 
 /* ----------- END PROFILE -----------*/
+
+/* ----------- BEGIN EDIT PROFILE -----------*/
+
+.edit-profile {
+    padding: 20px;
+    background-color: #fff;
+}
+
+.edit-profile h2 {
+    font-size: 18px;
+}
+
+/* ----------- END EDIT PROFILE -----------*/
